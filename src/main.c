@@ -11,6 +11,7 @@
 #define HUMANARC "dog.txt"
 #define DOGARC "human.txt"
 
+
 /*
  * Open a file to and makes etch line a string inserting it into a string array
  * Input:
@@ -43,63 +44,121 @@ void openfile(char** dna, char* file){
     }
 }
 
+/*
+ * Generate a random number limited by to ints(the interval include the limits)
+ *input:
+ *      max_number int:
+ *      minimum_number int:
+ *output:
+ *      int: random number generated
+ */
 int randomLimited(int max_number, int minimum_number){
+    int hold =0;
+    if (max_number<minimum_number){
+        hold= max_number;
+        max_number=minimum_number;
+        minimum_number=hold;
+    }
     return rand() % (max_number + 1 - minimum_number) + minimum_number;
 }
 
-char ** randombases(int nmr_bases, int * nm_str){
-    char str[]= "ACTG";
-    int nmr_elements = randomLimited(nmr_bases*nmr_bases,ZERO);
+/*
+ * Generate a Matrix of char that are the random bases of the chosen length
+ * input:
+ *      nmr_bases int:
+ *      nmr_elements int:
+ *      resp[nmr_elements][nmr_bases]:
+ * output:
+ *      *:
+ */
+void randombases(int nmr_bases, int  nmr_elements, char resp[nmr_elements][nmr_bases]){
+    char str[4][1]= {"A","C","T","G"};
 
-    char ** resp=(char **) malloc(sizeof (char *)*nmr_elements);
     for (int i = 0; i < nmr_elements; ++i) {
-        resp[i]= (char *) malloc(sizeof (char )*nmr_bases);
-    }
-
-    for (int i = 0; i < nmr_elements; ++i) {
-        for (int j = 0; j < nmr_bases; ++j) {
-
+        for (int j = 0; j < nmr_bases-1; ++j) {
             int ran=randomLimited(3,0);
-            resp[i][j]=str[ran];
+            resp[i][j]=str[ran][0];
+        }
+        int status=0;
+        // Evita Repetição de String
+        for (int j = 0; j < i; ++j) {
+            int match=0;
+            for (int k = 0; k < nmr_bases-1; ++k) {
+                if(resp[j][k]==resp[i][k])
+                    match++;
+            }
+            if (match>=nmr_bases-1){
+                i--;
+                status=1;
+                break;
+            }
+        }
+        if(status==0) {
+            resp[i][-1] = '\0';
         }
     }
-    printf("%d",nmr_elements);
-    *nm_str=nmr_elements;
-    return resp;
+    resp[nmr_elements][-1]='\0';
+}
+
+/*
+ * Function to calculate the fatorial of a given number
+ * input:
+ *      x int:
+ */
+int fat(int x){
+    int fat=1;
+    for (int i = 1; i < x+1; ++i) {
+        fat = fat * i;
+    }
+    return fat;
 }
 
 int main(void)
 {
+    //----------inicializa os arquivos-----\\
+
     srand((unsigned int)time(NULL));
     char* chimp[CHIMP],* human[HUMAN],* dog[DOG];
     openfile(chimp,CHIMPARC);
     openfile(human,HUMANARC);
     openfile(dog,DOGARC);
 
+    //----------seleciona sequencia de dna aleatoria-----\\
+
     int rand_dog,rand_human, rand_chimp,rand_len;
-    rand_dog = randomLimited(DOG-1,ZERO);
-    rand_chimp = randomLimited(CHIMP-1,ZERO);
-    rand_human = randomLimited(HUMAN-1,ZERO);
-    if(human[rand_human]==NULL){
-        printf("\nFAIL\n");
-    }
-    //acha a permutacao
+
+    do{
+        rand_human = randomLimited(HUMAN-1,ZERO);
+    } while (human[rand_human]==NULL);
+
+    do{
+        rand_chimp = randomLimited(CHIMP-1,ZERO);
+    } while (chimp[rand_chimp]==NULL);
+
+    do{
+        rand_dog = randomLimited(DOG-1,ZERO);
+    }while(dog[rand_dog]==NULL);
+
+    //--------------ERRO, acha a permutacao(produto cartesiano + escolha aleatoria)------------------\\
+
     int nmr_bases,nmr_elements;
-    int *nm_ele = (int *) malloc(sizeof (int));
-    *nm_ele=0;
-    char** strar;
+
     printf("Numero de bases:");
     scanf("%d", &nmr_bases);
-    strar = randombases(nmr_bases,nm_ele);
-    printf("%d",*nm_ele);
-    for (int i = 0; i < *nm_ele; ++i) {
-        for (int j = 0; j < nmr_bases; ++j) {
-            printf("%c", strar[i][j]);
-        }
-        printf("\n");
+
+    nmr_elements = randomLimited(fat(nmr_bases)*randomLimited(4,1),2);
+    char strar[nmr_elements][nmr_bases + 1];
+    randombases(nmr_bases + 1,nmr_elements, strar);
+
+    for (int i = 0; i < nmr_elements; ++i) {
+            printf("\n%s",strar[i]);
     }
+    //------------------------Casamento de Padrões--------------------------\\
 
-    //PERMUTAÇÂO
+
+    //------------------------Similaridade de Pares---------------------------\\
+
+    //-------------------------Simulação---------------------------------------\\
+
 }
-
 

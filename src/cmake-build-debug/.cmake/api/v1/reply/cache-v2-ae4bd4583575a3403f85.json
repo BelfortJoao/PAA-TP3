@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/belfort/faculdade/PAA/TP-3/cmake-build-debug"
+			"value" : "/home/belfort/faculdade/PAA/PAA-TP3/src/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -415,7 +415,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/belfort/faculdade/PAA/TP-3/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "/home/belfort/faculdade/PAA/PAA-TP3/src/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -475,7 +475,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/belfort/faculdade/PAA/TP-3"
+			"value" : "/home/belfort/faculdade/PAA/PAA-TP3/src"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1007,7 +1007,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/belfort/faculdade/PAA/TP-3/cmake-build-debug"
+			"value" : "/home/belfort/faculdade/PAA/PAA-TP3/src/cmake-build-debug"
 		},
 		{
 			"name" : "TP_3_IS_TOP_LEVEL",
@@ -1031,7 +1031,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/belfort/faculdade/PAA/TP-3"
+			"value" : "/home/belfort/faculdade/PAA/PAA-TP3/src"
 		},
 		{
 			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",

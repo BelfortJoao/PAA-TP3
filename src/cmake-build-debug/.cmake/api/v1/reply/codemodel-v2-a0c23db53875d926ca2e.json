@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/belfort/faculdade/PAA/TP-3/cmake-build-debug",
-		"source" : "/home/belfort/faculdade/PAA/TP-3"
+		"build" : "/home/belfort/faculdade/PAA/PAA-TP3/src/cmake-build-debug",
+		"source" : "/home/belfort/faculdade/PAA/PAA-TP3/src"
 	},
 	"version" : 
 	{
