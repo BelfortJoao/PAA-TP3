@@ -1,3 +1,0 @@
-/home/belfort/faculdade/PAA/PAA-TP3/src/cmake-build-debug/CMakeFiles/TP_3.dir
-/home/belfort/faculdade/PAA/PAA-TP3/src/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/belfort/faculdade/PAA/PAA-TP3/src/cmake-build-debug/CMakeFiles/rebuild_cache.dir
