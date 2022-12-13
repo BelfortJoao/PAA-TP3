@@ -18,6 +18,7 @@ void readFile(int n, char vector[n], char *filepath)
 
     if (!file)
     {
+        printf("Erro ao ler o arquivo %s, tente trocar o define de (../) para (./) ou vice-versa.", filepath);
         exit(1);
     }
 
